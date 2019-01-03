@@ -14,3 +14,42 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::namespace('Bookreview')->group(function () {
+    Route::get('/', [
+        'uses' => 'IndexController@index',
+        'as' => 'bookreview.index.index'
+    ]);
+});
+<<<<<<< HEAD
+=======
+
+Route::namespace('Admin')->prefix('admin')->group(function () {
+
+    Route::get('/', [
+        'uses' => 'IndexController@index',
+        'as' => 'admin.index.index'
+    ])->middleware('auth');
+
+    Route::get('/cat', [
+        'uses' => 'CategoryController@index',
+        'as' => 'admin.cat.index'
+    ])->middleware('auth');
+
+    Route::get('/login',[
+        'uses' => 'LoginController@getLogin',
+        'as' => 'login',
+    ]);
+
+    Route::post('/login',[
+        'uses' => 'LoginController@postLogin',
+        'as' => 'admin.login.index',
+    ]);
+
+    Route::get('logout',[
+        'uses'=>'LoginController@logOut',
+        'as'=>'admin.logout'
+    ])->middleware('auth');
+
+});
+>>>>>>> accef7c... pull login admin
