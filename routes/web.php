@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,14 +9,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::namespace('Bookreview')->group(function () {
-    Route::get('/', [
-        'uses' => 'IndexController@index',
-        'as' => 'bookreview.index.index'
-    ]);
+Route::namespace('Admin')->prefix('admin')->group(function () {
+
+    Route::group(['middleware' => 'auth'], function()
+    {
+        Route::resource('login', 'Login')->names([
+            'index' => 'login'
+        ]);;
+
+        Route::resource('childcategory', 'ChildCategory');
+
+        Route::resource('index', 'Index')->middleware('auth');
+
+        Route::resource('cat', 'Categorys')->middleware('auth');
+    });
+
 });

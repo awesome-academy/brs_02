@@ -14,5 +14,4 @@ class IndexController extends Controller
     public function index(){
         return view('bookreview.index.index');
     }
-
 }
