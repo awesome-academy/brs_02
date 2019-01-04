@@ -12,7 +12,6 @@
                 </ul>
             </li>
             <li><a href="{{route('cat.index')}}"><i class="icon-edit"></i><span class="hidden-tablet">Danh mục</span></a></li>
-
         </ul>
     </div>
 </div>
