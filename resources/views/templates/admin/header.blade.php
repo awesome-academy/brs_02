@@ -13,7 +13,7 @@
     <!-- start: Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- end: Mobile Specific -->
-
+    <script src="//cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
     <!-- start: CSS -->
     {{ Html::style('/templates/admin/css/bootstrap.min.css') }}
     {{ Html::style('/templates/admin/css/bootstrap-responsive.min.css') }}
