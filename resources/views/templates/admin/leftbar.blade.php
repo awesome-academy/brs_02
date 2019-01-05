@@ -11,7 +11,7 @@
                     <li><a class="submenu" href="submenu3.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 3</span></a></li>
                 </ul>
             </li>
-            <li><a href="{{route('admin.cat.index')}}"><i class="icon-edit"></i><span class="hidden-tablet">Danh mục</span></a></li>
+            <li><a href="{{route('cat.index')}}"><i class="icon-edit"></i><span class="hidden-tablet">Danh mục</span></a></li>
         </ul>
     </div>
 </div>

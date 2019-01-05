@@ -1,21 +1,30 @@
 @extends('templates.admin.master')
 @section('content')
+
     <div id="content" class="span10">
-
-
         <ul class="breadcrumb">
             <li>
                 <i class="icon-home"></i>
-                <a href="index.html">Home</a>
+                <a href="index.html">@lang('lable.home')</a>
                 <i class="icon-angle-right"></i>
             </li>
-            <li><a href="#">Tables</a></li>
+            <li><a href="#">@lang('lable.category')</a></li>
         </ul>
 
+        <div style="margin-bottom:20px" class="row-fluid sortable">
+            <div class="span12">
+                <a href="{{ route('cat.create') }}" class="btn btn-primary">@lang('lable.add')</a>
+            </div>
+        </div>
+        @if (Session::has('msg'))
+            <div>
+                <strong>{{ Session::get('msg') }}</strong>
+            </div>
+        @endif
         <div class="row-fluid sortable">
             <div class="box span12">
                 <div class="box-header" data-original-title>
-                    <h2><i class="halflings-icon white user"></i><span class="break"></span>Members</h2>
+                    <h2><i class="halflings-icon white user"></i><span class="break"></span>@lang('lable.category')</h2>
                     <div class="box-icon">
                         <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
                         <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
@@ -23,55 +32,61 @@
                     </div>
                 </div>
                 <div class="box-content">
-                    <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                    <table class="table table-striped table-bordered bootstrap-datatable">
                         <thead>
                         <tr>
-                            <th>Username</th>
-                            <th>Date registered</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>ID</th>
+                            <th>@lang('category.category_name')</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Dennis Ji</td>
-                            <td class="center">2012/01/01</td>
-                            <td class="center">Member</td>
-                            <td class="center">
-                                <span class="label label-success">Active</span>
-                            </td>
-                            <td class="center">
-                                <a class="btn btn-success" href="#">
-                                    <i class="halflings-icon white zoom-in"></i>
-                                </a>
-                                <a class="btn btn-info" href="#">
-                                    <i class="halflings-icon white edit"></i>
-                                </a>
-                                <a class="btn btn-danger" href="#">
-                                    <i class="halflings-icon white trash"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Dennis Ji</td>
-                            <td class="center">2012/01/01</td>
-                            <td class="center">Member</td>
-                            <td class="center">
-                                <span class="label label-success">Active</span>
-                            </td>
-                            <td class="center">
-                                <a class="btn btn-success" href="#">
-                                    <i class="halflings-icon white zoom-in"></i>
-                                </a>
-                                <a class="btn btn-info" href="#">
-                                    <i class="halflings-icon white edit"></i>
-                                </a>
-                                <a class="btn btn-danger" href="#">
-                                    <i class="halflings-icon white trash"></i>
-                                </a>
-                            </td>
-                        </tr>
+                        @if (!$objItemCats->first())
+                            @php
+                                $colspan = 8;
+                            @endphp
+                            <tr class="even pointer">
+                                <td class="a-center " colspan="{{ $colspan }}">
+                                    <p>@lang('lable.no_data')</p>
+                                </td>
+                            </tr>
+                        @else
+                            @foreach($objItemCats as $objItemCat)
+                            <tr>
+                                <td>{!! $objItemCat->cat_id !!}</td>
+                                <td class="center">{!! $objItemCat->cname !!}</td>
+                                <td class="center">
+                                    <a class="btn btn-info" href="{{route('cat.show', $objItemCat->cat_id)}}">
+                                        <i class=" ">@lang('lable.update')</i>
+                                    </a>
+                                    <div>
+                                        {{ Form::open(array('route' => array('cat.destroy', $objItemCat->cat_id), 'method' => 'delete')) }}
+                                        {!! Form::submit( trans('lable.delete'), ['class'=>'btn btn-danger']) !!}
+                                        {{ Form::close() }}
+                                    </div>
+                                </td>
+                            </tr>
+                                @foreach($arrChildCats as $key=>$value)
+                                    @if($objItemCat->cat_id == $key)
+                                        @foreach($value as $k=>$va)
+                                            <tr>
+                                                <td>{!! $k !!}</td>
+                                                <td class="center"> --------- {!! $va !!}</td>
+                                                <td class="center">
+                                                    <a class="btn btn-info" href="{{route('cat.show', $k)}}">
+                                                        <i class=" ">@lang('lable.update')</i>
+                                                    </a>
+                                                    <div>
+                                                        {{ Form::open(array('route' => array('cat.destroy', $k), 'method' => 'delete')) }}
+                                                        {!! Form::submit( trans('lable.delete'), ['class'=>'btn btn-danger']) !!}
+                                                        {{ Form::close() }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                            @endforeach
+                        @endif
                         </tbody>
                     </table>
                 </div>
