@@ -1,6 +1,5 @@
 @extends('templates.admin.master')
 @section('content')
-
     <div id="content" class="span10">
         <ul class="breadcrumb">
             <li>

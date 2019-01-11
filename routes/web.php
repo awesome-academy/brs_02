@@ -29,3 +29,4 @@ Route::namespace('Admin')->prefix('admin')->group(function () {
     });
 
 });
+

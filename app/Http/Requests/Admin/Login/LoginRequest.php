@@ -31,8 +31,13 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
+<<<<<<< HEAD
             'username.required' => trans('lable.request_username'),
             'password.required' => trans('lable.request_password'),
+=======
+            'username.required' => trans('lable.Request_username'),
+            'password.required' => trans('lable.Request_password'),
+>>>>>>> master
         ];
     }
 }
