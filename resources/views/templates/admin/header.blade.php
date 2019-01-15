@@ -32,7 +32,7 @@
     <!--[if IE 9]>
     {{ Html::style('/templates/admin/css/ie9.css') }}
     <![endif]-->
-
+    {{ Html::script('//cdn.ckeditor.com/4.11.1/standard/ckeditor.js') }}
     <!-- start: Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico">
     <!-- end: Favicon -->

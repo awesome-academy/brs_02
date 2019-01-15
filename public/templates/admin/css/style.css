@@ -30,6 +30,13 @@
 
 /* Main Colors
 =================================================================== */
+.marginbot{
+	margin-bottom: 20px;
+}
+.picturewh{
+	width: 150px;
+	height:150px;
+}
 
 .black,
 .black [class="box-header"],

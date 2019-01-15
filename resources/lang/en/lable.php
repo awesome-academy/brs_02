@@ -22,7 +22,7 @@ return [
     'request_password' => 'Enter Password',
     'request_catname'  => 'Enter Name categoty',
     'home' => 'Home',
-    'category' => 'Categorys',
+    'category' => 'Category',
     'add' => 'Add',
     'delete' => 'Delete',
     'update'  => 'Update',
@@ -31,4 +31,5 @@ return [
     'cancel' => 'Cancel',
     'child_cat' => 'Categorys child',
     'number' => 'ID',
+
 ];

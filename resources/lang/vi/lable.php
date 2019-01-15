@@ -23,7 +23,7 @@ return [
     'home' => 'Trang chủ',
     'category' => 'Danh mục',
     'add' => 'Thêm',
-    'Delete' => 'Xóa',
+    'delete' => 'Xóa',
     'update'  => 'Sửa',
     'no_data' => 'Chưa có dữ liệu',
     'you_sure_delete' => 'Bạn có chắc chắn muốn xóa',

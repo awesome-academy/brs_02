@@ -12,15 +12,22 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::namespace('Admin')->group(function () {
-    Route::resource('login', 'Login')->names([
-        'index' => 'login'
-    ]);;
+
+Route::namespace('Admin')->prefix('admin')->group(function () {
     Route::group(['middleware' => 'auth'], function()
     {
-
+        Route::resource('login', 'Login')->names([
+            'index' => 'login'
+        ]);;
+      
         Route::resource('childcategory', 'ChildCategory');
-        Route::resource('index', 'Index')->middleware('auth');
-        Route::resource('cat', 'Categorys')->middleware('auth');
+      
+        Route::resource('index', 'Index');
+      
+        Route::resource('cat', 'Categorys');
+      
+       Route::resource('book', 'Books');
     });
+
+   
 });
